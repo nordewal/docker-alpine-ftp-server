@@ -70,4 +70,4 @@ fi
 openssl req -x509 -nodes -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=www.example.com" -days 9999 -newkey rsa:4096 -keyout /tmp/vsftpd.pem -out /tmp/vsftpd.pem
 TLS_OPT="-orsa_cert_file=/tmp/vsftpd.pem -ossl_enable=YES -oallow_anon_ssl=NO -oforce_local_data_ssl=YES -oforce_local_logins_ssl=YES -ossl_tlsv1=NO -ossl_sslv2=NO -ossl_sslv3=NO -ossl_ciphers=HIGH"
 
-exec vsftpd -opasv_min_port=$MIN_PORT -opasv_max_port=$MAX_PORT $ADDR_OPT $TLS_OPT /etc/vsftpd/vsftpd.conf
+vsftpd -opasv_min_port=$MIN_PORT -opasv_max_port=$MAX_PORT $ADDR_OPT $TLS_OPT /etc/vsftpd/vsftpd.conf
